@@ -56,12 +56,14 @@ def pixelsToImage(im, pixels):
 # end def pixelsToImage(im, pixels):
 
 def pixelsToPoints(im, pixels):
-    #defualt bakground color is black
-    #outimg = Image.new("RGB",  size)
+    #default background color is black
     for p in pixels:
-        im.putpixel(p[1], p[0])
-    im.show()
-    #return outimg
+        if type(p[0][0]) == float:  #YIQ value
+            im.putpixel(p[1],
+                        tuple([int(v*255) for v in colorsys.yiq_to_rgb(p[0][0], p[0][1], p[0][2])]))
+        else:
+            im.putpixel(p[1], p[0])
+    #im.show()
 # enddef pixelsToPoints(im, pixels):
 
 def grayScale(im, pixels):
