@@ -81,7 +81,8 @@ def main():
     with Image.open(IMG_NAME + '.jpg') as im:
         pixels,yiq_pixels = storePixels(im)    #store rgb pixels
 
-        selectionSort(yiq_pixels, comparePixels) #sort on first val
+        #selectionSort(yiq_pixels, comparePixels) #sort on first val
+        mergeSort(yiq_pixels, comparePixels) #sort on first val
         ## may need sorted image to see what is going on
         sorted_im = pixelsToImage(im, yiq_pixels)
         sorted_im.save('sorted_' + IMG_NAME + '.jpg', 'JPEG')

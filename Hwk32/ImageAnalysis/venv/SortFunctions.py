@@ -2,7 +2,7 @@ import random
 
 # Iterative mergesort function to
 # sort arr[0...n-1]
-def mergeSort(a):
+def mergeSort(a, compare):
     current_size = 1
 
     # Outer loop for traversing Each
@@ -29,7 +29,7 @@ def mergeSort(a):
                                   + left - 1 > len(a) - 1])
 
             # Merge call for each sub array
-            merge(a, left, mid, right)
+            merge(a, left, mid, right, compare)
             left = left + current_size * 2
 
         # Increasing sub array size by
@@ -39,7 +39,7 @@ def mergeSort(a):
     # Merge Function
 
 
-def merge(a, l, m, r):
+def merge(a, l, m, r, compare):
     n1 = m - l + 1
     n2 = r - m
     L = [0] * n1
@@ -51,7 +51,7 @@ def merge(a, l, m, r):
 
     i, j, k = 0, 0, l
     while i < n1 and j < n2:
-        if L[i] > R[j]:
+        if compare(L[i], R[j]):
             a[k] = R[j]
             j += 1
         else:
