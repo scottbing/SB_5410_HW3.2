@@ -32,8 +32,8 @@ def main():
 
     while (True):
 
-        #IMG_NAME = 'tinyrose'   #tiny rose
-        IMG_NAME = 'bigrose'   #big rose
+        IMG_NAME = 'tinyrose'   #tiny rose
+        #IMG_NAME = 'bigrose'   #big rose
         #IMG_NAME = 'abq'   #large 500x300
         #IMG_NAME = 'abq_huge'  # large 1500x1300
 
@@ -57,28 +57,10 @@ def main():
             yiq_target = colorsys.rgb_to_yiq(target[0], target[1], target[2])
 
             if TOLERENCE:
-                tolerance1 = int(len(yiq_pixels)/2)
-                print("Tolerance1: ", tolerance1)
-                subi = tolerance1
-                # use yiq_target instead  of threshold in search
-                subi = binarySearchSub([r[0][0] for r in yiq_pixels],
-                                       0, len(yiq_pixels) - 1, yiq_target[0])
-                im.show()
-                tolerance2 = int(len(yiq_pixels)/4)
-                print("Tolerance2: ", tolerance2)
-                subi = tolerance2
-                # use yiq_target instead  of threshold in search
-                subi = binarySearchSub([r[0][0] for r in yiq_pixels],
-                                       0, len(yiq_pixels) - 1, yiq_target[0])
-                im.show()
-                tolerance3 = int(len(yiq_pixels)/8)
-                print("Tolerance3: ", tolerance3)
-                subi = tolerance3
-                # use yiq_target instead  of threshold in search
-                subi = binarySearchSub([r[0][0] for r in yiq_pixels],
-                                       0, len(yiq_pixels) - 1, yiq_target[0])
-                im.show()
-
+                tolerance = int(len(yiq_pixels)/2)
+                print("Tolerance: ", tolerance)
+                # change the pivot point
+                subi = tolerance
                 TOLERENCE = False   #reset tolerance
             else:
                 # use yiq_target instead  of threshold in search

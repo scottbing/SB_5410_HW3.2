@@ -98,7 +98,7 @@ def partition(arr, low, high, compare):
 # high  --> Ending index
 
 # Function to do Quick sort
-def quickSort(arr, low, high, compare):
+def quickSortRecursion(arr, low, high, compare):
     if low < high:
         # pi is partitioning index, arr[p] is now
         # at right place
